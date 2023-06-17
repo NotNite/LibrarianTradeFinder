@@ -3,11 +3,10 @@ package de.greenman999.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import dev.isxander.yacl.api.ConfigCategory;
-import dev.isxander.yacl.api.Option;
-import dev.isxander.yacl.api.YetAnotherConfigLib;
-import dev.isxander.yacl.gui.controllers.TickBoxController;
-import dev.isxander.yacl.gui.controllers.cycling.EnumController;
+import dev.isxander.yacl3.api.ConfigCategory;
+import dev.isxander.yacl3.api.Option;
+import dev.isxander.yacl3.api.YetAnotherConfigLib;
+import dev.isxander.yacl3.gui.controllers.TickBoxController;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.enchantment.Enchantment;
@@ -104,23 +103,23 @@ public class TradeFinderConfig {
                         .name(Text.literal("General"))
                         .option(Option.createBuilder(boolean.class)
                                 .name(Text.literal("Prevent axe breaking"))
-                                .tooltip(Text.literal("Stop the searching process if your axe is about to break."))
+                                //.tooltip(Text.literal("Stop the searching process if your axe is about to break."))
                                 .binding(
                                         true,
                                         () -> preventAxeBreaking,
                                         value -> preventAxeBreaking = value
                                 )
-                                .controller(TickBoxController::new)
+                                .customController(TickBoxController::new)
                                 .build())
                         .option(Option.createBuilder(boolean.class)
                                 .name(Text.literal("Teleport to Villager"))
-                                .tooltip(Text.literal("Teleport to the villager before the lectern is placed, to pick up items that dropped behind the lectern."))
+                                //.tooltip(Text.literal("Teleport to the villager before the lectern is placed, to pick up items that dropped behind the lectern."))
                                 .binding(
                                         false,
                                         () -> tpToVillager,
                                         value -> tpToVillager = value
                                 )
-                                .controller(TickBoxController::new)
+                                .customController(TickBoxController::new)
                                 .build())
                         .build()
                 )
@@ -136,13 +135,13 @@ public class TradeFinderConfig {
     public @NotNull Collection<Option<?>> getEnchantmentOptions() {
         return enchantments.entrySet().stream().map(entry -> Option.createBuilder(boolean.class)
                 .name(entry.getKey().getName(entry.getKey().getMaxLevel()).copy().formatted(Formatting.WHITE))
-                .tooltip(Text.literal("Search for this enchantment."))
+                //.tooltip(Text.literal("Search for this enchantment."))
                 .binding(
                         false,
                         entry::getValue,
                         entry::setValue
                 )
-                .controller(TickBoxController::new)
+                .customController(TickBoxController::new)
                 .build()).collect(Collectors.toList());
     }
 

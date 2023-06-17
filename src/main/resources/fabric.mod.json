@@ -22,11 +22,5 @@
 	"mixins": [
 		"librarian-trade-finder.mixins.json"
 	],
-	"depends": {
-		"fabricloader": ">=0.14.13",
-		"minecraft": ">=1.19.3",
-		"java": ">=17",
-		"fabric-api": "*",
-		"yet-another-config-lib": ">=2.1.1"
-	}
+	"depends": {}
 }
